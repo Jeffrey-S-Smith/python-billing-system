@@ -3,7 +3,7 @@ module name: purchase
 function name: purchase
 overview of this function:
 1) Customer interaction for what and how much the want buy.
-2) check the user interaction valid or not with exception handselling.
+2) check the user interaction valid or not with exception handelling.
 3) calculating the customer purchase product with discount(if discountable)
 4) show the last update of the product
 5) write the invoice for customer with unique naming
@@ -13,7 +13,7 @@ overview of this function:
 def purchase(List):
     L = List  # assign list with variable name 'L'.
     a_name = input("Please enter your name: ")
-    print("\nHello " + a_name + "! Welcome to Pi on the Wall Electronic Store.\nPlease select product as per your choice.")
+    print("\nHello " + a_name + "! Welcome to our Electronic Store.\nLook at above and select product as your choice.")
     q = {}  # assign empty dictionary with variable name 'q'.
     flag = "Y"
     while flag.upper() == "Y":  # check and go if flag is 'Y' or 'y'.
@@ -163,6 +163,59 @@ def purchase(List):
         else:
             file.write(
                 str("\n" + str(keys) + " \t\t " + str(q['HDD']) + " \t\t " + str(L[2][1]) + " \t\t " + str(h_amount)))
+
+    file.write("\n\n-------------------------------------------------------------")
+    file.write("\n\t\t\tYour discountable amount: " + str(f_amount))
+    file.write("\n-------------------------------------------------------------")
+    file.write("\n\t\t   Your " + str(discount) + "% discounted amount is: " + str(dis))
+    file.write("\n-------------------------------------------------------------")
+    file.write("\n\t\t\t Your payable amount is: " + str(total))
+    file.write("\n-------------------------------------------------------------")
+    file.write("\n\n\tThank You " + a_name + " for your shopping.\n\t\tSee you again!")
+    file.write("\n=============================================================")
+    file.close()
+    return q
+
+    import datetime  # import system date and time for create a unique invoive name.
+    dt = str(datetime.datetime.now().year) + "-" + str(datetime.datetime.now().month) + "-" + str(
+        datetime.datetime.now().day) + "-" + str(datetime.datetime.now().hour) + "-" + str(
+        datetime.datetime.now().minute) + "-" + str(datetime.datetime.now().second)
+    invoice = str(dt)  # unique invoice
+    t = str(datetime.datetime.now().year) + "-" + str(datetime.datetime.now().month) + "-" + str(
+        datetime.datetime.now().day)  # date
+    d = str(t)  # date
+    u = str(datetime.datetime.now().hour) + ":" + str(datetime.datetime.now().minute) + ":" + str(
+        datetime.datetime.now().second)  # time
+    e = str(u)  # time
+
+    file = open(invoice + " (" + a_name + ").txt", "w")  # generate a unique invoive name and open it in write mode.
+    file.write("=============================================================")
+    file.write("\nELECTRONIC STORE\t\t\t\tINVOICE")
+    file.write("\n\nInvoice: " + invoice + "\t\tDate: " + d + "\n\t\t\t\t\tTime: " + e + "")
+    file.write("\nName of Customer: " + str(a_name) + "")
+    file.write("\n=============================================================")
+    file.write("\nPARTICULAR\tQUANTITY\tUNIT PRICE\tTOTAL")
+    file.write("\n-------------------------------------------------------------")
+
+    for keys in q.keys():  # In this loop, write in a file only those product which is purchase by user.
+        if keys == "PHONE":
+            file.write(
+                str("\n" + str(keys) + " \t\t " + str(q['PHONE']) + " \t\t " + str(L[0][1]) + " \t\t " + str(p_amount)))
+        elif keys == "iPHONE":
+            file.write(str(
+                "\n" + str(keys) + " \t\t " + str(q['iPHONE']) + " \t\t " + str(L[1][1]) + " \t\t " + str(l_amount)))
+        elif keys == "DELLLAPTOP":
+            file.write(str(
+                "\n" + str(keys) + " \t\t " + str(q['DELLLAPTOP']) + " \t\t " + str(L[2][1]) + " \t\t " + str(l_amount)))
+        elif keys == "MACPROLAPTOP":
+            file.write(str(
+                "\n" + str(keys) + " \t\t " + str(q['MACPROLAPTOP']) + " \t\t " + str(L[3][1]) + " \t\t " + str(l_amount)))
+        elif keys == "HDDLGTV":
+            file.write(str(
+                "\n" + str(keys) + " \t\t " + str(q['HDDLGTV']) + " \t\t " + str(L[4][1]) + " \t\t " + str(l_amount)))
+        else:
+            file.write(
+                str("\n" + str(keys) + " \t\t " + str(q['HDDTV']) + " \t\t " + str(L[5][1]) + " \t\t " + str(h_amount)))
 
     file.write("\n\n-------------------------------------------------------------")
     file.write("\n\t\t\tYour discountable amount: " + str(f_amount))

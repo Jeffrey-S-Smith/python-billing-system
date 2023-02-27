@@ -5,7 +5,7 @@ def read_file():    # Function is defined with name : 'read_file'
     for line in lines:
         L.append(line.replace("\n", "").split(","))
     file.close()
-    print("Following products are available in our Store")
+    print("Following products are avilable in our Store")
     print("--------------------------------------------")
     print("PRODUCT\t\tPRICE\t\tQUANTITY")
     print("--------------------------------------------")

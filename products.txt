@@ -1,6 +1,3 @@
-Phone,         700,1000
-iPhone,        1000,2000
-DellLaptop,1400,6000
-MacProLaptop,2000,6000
-HDDTV,        1500, 600
-HDDLGTV,1600, 700
+Phone,2000,1996
+laptop,1200,1994
+HDD,1500,798
